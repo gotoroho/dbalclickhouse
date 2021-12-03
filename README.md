@@ -8,7 +8,7 @@ composer require stereoflo/dbal-clickhouse
 ### Symfony
 configure...
 ```yml
-# app/config/config.yml
+# config/packages/doctrine.yaml
 doctrine:
   dbal:
     dbname:   default
