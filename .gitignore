@@ -1,0 +1,8 @@
+.idea/
+composer.lock
+vendor/
+phpunit.xml
+Vagrantfile
+puphpet/
+.vagrant/
+.php-cs-fixer.cache
