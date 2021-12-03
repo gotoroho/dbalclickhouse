@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace DBALClickHouse;
 
+use DBALClickHouse\Driver\ExceptionConverter;
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Driver\API\ExceptionConverter;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class Driver implements \Doctrine\DBAL\Driver
@@ -55,6 +55,6 @@ class Driver implements \Doctrine\DBAL\Driver
 
     public function getExceptionConverter(): ExceptionConverter
     {
-        return new \Doctrine\DBAL\Driver\API\IBMDB2\ExceptionConverter();
+        return new ExceptionConverter();
     }
 }
