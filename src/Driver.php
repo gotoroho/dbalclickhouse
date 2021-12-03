@@ -10,19 +10,23 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class Driver implements \Doctrine\DBAL\Driver
 {
-    public function connect(array $params)
+    public function connect(array $params, $username = null, $password = null, array $driverOptions = [])
     {
-        if (!isset($params['user'])) {
-            throw new ClickHouseException('Connection parameter `user` is required');
+        if (null === $username) {
+            if (!isset($params['user'])) {
+                throw new ClickHouseException('Connection parameter `user` is required');
+            }
+
+            $user = $params['user'];
         }
 
-        $user = $params['user'];
+        if (null === $password) {
+            if (!isset($params['password'])) {
+                throw new ClickHouseException('Connection parameter `password` is required');
+            }
 
-        if (!isset($params['password'])) {
-            throw new ClickHouseException('Connection parameter `password` is required');
+            $password = $params['password'];
         }
-
-        $password = $params['password'];
 
         if (!isset($params['host'])) {
             throw new ClickHouseException('Connection parameter `host` is required');
