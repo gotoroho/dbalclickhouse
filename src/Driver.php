@@ -10,23 +10,19 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 class Driver implements \Doctrine\DBAL\Driver
 {
-    public function connect(array $params, $user = null, $password = null, array $driverOptions = []): ClickHouseConnection
+    public function connect(array $params)
     {
-        if (null === $user) {
-            if (!isset($params['user'])) {
-                throw new ClickHouseException('Connection parameter `user` is required');
-            }
-
-            $user = $params['user'];
+        if (!isset($params['user'])) {
+            throw new ClickHouseException('Connection parameter `user` is required');
         }
 
-        if (null === $password) {
-            if (!isset($params['password'])) {
-                throw new ClickHouseException('Connection parameter `password` is required');
-            }
+        $user = $params['user'];
 
-            $password = $params['password'];
+        if (!isset($params['password'])) {
+            throw new ClickHouseException('Connection parameter `password` is required');
         }
+
+        $password = $params['password'];
 
         if (!isset($params['host'])) {
             throw new ClickHouseException('Connection parameter `host` is required');
@@ -43,29 +39,14 @@ class Driver implements \Doctrine\DBAL\Driver
         return new ClickHouseConnection($params, (string) $user, (string) $password, $this->getDatabasePlatform());
     }
 
-    public function getDatabasePlatform(): ClickHousePlatform
+    public function getDatabasePlatform()
     {
         return new ClickHousePlatform();
     }
 
-    public function getSchemaManager(Connection $conn, AbstractPlatform $platform): ClickHouseSchemaManager
+    public function getSchemaManager(Connection $conn, AbstractPlatform $platform)
     {
         return new ClickHouseSchemaManager($conn, $platform);
-    }
-
-    public function getName(): string
-    {
-        return 'clickhouse';
-    }
-
-    public function getDatabase(Connection $conn)
-    {
-        $params = $conn->getParams();
-        if (isset($params['dbname'])) {
-            return $params['dbname'];
-        }
-
-        return $conn->fetchOne('SELECT currentDatabase() as dbname');
     }
 
     public function getExceptionConverter(): ExceptionConverter

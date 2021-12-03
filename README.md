@@ -32,20 +32,18 @@ configure...
 ```yml
 # app/config/config.yml
 doctrine:
-    dbal:
-        connections:
-            clickhouse:
-                host:     localhost
-                port:     8123
-                user:     default
-                password: ""
-                dbname:   default
-                driver_class: DBALClickHouse\Driver
-                wrapper_class: DBALClickHouse\Connection
-                options:
-                    enable_http_compression: 1
-                    max_execution_time: 60
-            #mysql:
+  dbal:
+    dbname:   default
+    host:     localhost
+    port:     8123
+    user:     default
+    password: ""
+    driver_class: DBALClickHouse\Driver
+    wrapper_class: DBALClickHouse\Connection
+    options:
+      enable_http_compression: 1
+      max_execution_time: 60
+      #mysql:
             #   ...
 ```
 ...and get from the service container

@@ -4,6 +4,11 @@ declare(strict_types = 1);
 
 namespace DBALClickHouse;
 
+use DBALClickHouse\Types\BitNumericalClickHouseType;
+use DBALClickHouse\Types\DatableClickHouseType;
+use DBALClickHouse\Types\NumericalClickHouseType;
+use DBALClickHouse\Types\StringClickHouseType;
+use DBALClickHouse\Types\UnsignedNumericalClickHouseType;
 use Doctrine\DBAL\ParameterType;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\TrimMode;
@@ -23,11 +28,6 @@ use Doctrine\DBAL\Types\StringType;
 use Doctrine\DBAL\Types\TextType;
 use Doctrine\DBAL\Types\Type;
 use Exception;
-use DBALClickHouse\Types\BitNumericalClickHouseType;
-use DBALClickHouse\Types\DatableClickHouseType;
-use DBALClickHouse\Types\NumericalClickHouseType;
-use DBALClickHouse\Types\StringClickHouseType;
-use DBALClickHouse\Types\UnsignedNumericalClickHouseType;
 use InvalidArgumentException;
 use function addslashes;
 use function array_filter;
