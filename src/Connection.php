@@ -14,7 +14,7 @@ use function trim;
 
 class Connection extends \Doctrine\DBAL\Connection
 {
-    public function executeUpdate(string $sql, array $params = [], array $types = []): int
+    public function executeUpdate($sql, array $params = [], array $types = []): int
     {
         // ClickHouse has no UPDATE or DELETE statements
         $command = strtoupper(substr(trim($sql), 0, 6));
