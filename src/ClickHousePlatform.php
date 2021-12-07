@@ -983,6 +983,6 @@ class ClickHousePlatform extends AbstractPlatform
 
     public function getCurrentDatabaseExpression(): string
     {
-        return 'DATABASE()';
+        return 'currentDatabase()';
     }
 }
