@@ -8,6 +8,7 @@ composer require stereoflo/dbal-clickhouse
 ### Symfony
 configure...
 ```.dotenv
+# .env
 CLICKHOUSE_HOST=127.0.0.1
 CLICKHOUSE_PORT=8123
 CLICKHOUSE_USER=default
