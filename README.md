@@ -36,7 +36,7 @@ doctrine:
     /**
      * @return array<array<string, string>>
      */
-    public function getByAffiliateId(int $userId): array
+    public function getByUserId(int $userId): array
     {
         $result = $this->connection
             ->createQueryBuilder()
