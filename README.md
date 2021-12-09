@@ -7,22 +7,28 @@ composer require stereoflo/dbal-clickhouse
 ## Initialization
 ### Symfony
 configure...
+```.dotenv
+CLICKHOUSE_HOST=127.0.0.1
+CLICKHOUSE_PORT=8123
+CLICKHOUSE_USER=default
+CLICKHOUSE_PASSWORD=
+```
+
 ```yml
 # config/packages/doctrine.yaml
 doctrine:
-  dbal:
-    dbname:   default
-    host:     localhost
-    port:     8123
-    user:     default
-    password: ""
-    driver_class: DBALClickHouse\Driver
-    wrapper_class: DBALClickHouse\Connection
-    options:
-      enable_http_compression: 1
-      max_execution_time: 60
-      #mysql:
-            #   ...
+    dbal:
+        dbname:   default
+        host:     '%env(resolve:CLICKHOUSE_HOST)%'
+        port:     '%env(resolve:CLICKHOUSE_PORT)%'
+        user:     '%env(resolve:CLICKHOUSE_USER)%'
+        password: '%env(resolve:CLICKHOUSE_PASSWORD)%'
+        driver_class: DBALClickHouse\Driver
+        wrapper_class: DBALClickHouse\Connection
+        options:
+            enable_http_compression: 1
+            max_execution_time: 60
+
 ```
 ...and get from the service container
 ```php
