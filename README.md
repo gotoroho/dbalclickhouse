@@ -26,5 +26,25 @@ doctrine:
 ```
 ...and get from the service container
 ```php
-$conn = $this->get('doctrine.dbal.clickhouse_connection');
+    private Connection $connection;
+
+    public function __construct(Connection $connection)
+    {
+        $this->connection = $connection;
+    }
+
+    /**
+     * @return array<array<string, string>>
+     */
+    public function getByAffiliateId(int $userId): array
+    {
+        $result = $this->connection
+            ->createQueryBuilder()
+            ->select('user.user_id')
+            ->from('users', 'user')
+            ->where('user.user_id = :user_id')
+            ->setParameter('v', $userId)
+            ->executeQuery();
+
+        return $result->fetchAllAssociative();
 ``
