@@ -43,7 +43,7 @@ doctrine:
             ->select('user.user_id')
             ->from('users', 'user')
             ->where('user.user_id = :user_id')
-            ->setParameter('v', $userId)
+            ->setParameter('user_id', $userId)
             ->executeQuery();
 
         return $result->fetchAllAssociative();
