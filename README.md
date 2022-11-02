@@ -1,7 +1,7 @@
 ## Installation
 
 ```
-composer require stereoflo/dbal-clickhouse
+composer require gotoroho/dbal-clickhouse
 ```
 
 ## Initialization
