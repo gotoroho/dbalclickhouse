@@ -1,10 +1,10 @@
 {
-    "name": "stereoflo/dbal-clickhouse",
+    "name": "gotoroho/dbal-clickhouse",
     "type": "library",
     "description": "Doctrine DBAL driver for ClickHouse",
     "license": "MIT",
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.1",
         "doctrine/dbal": "^3.2",
         "smi2/phpclickhouse": "^1.4"
     },
